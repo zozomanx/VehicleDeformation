@@ -1,19 +1,28 @@
-fx_version  'cerulean'
-game        'gta5'
-lua54       'yes'
 
-name        'vehiclehandler'
-description 'Collision/damage handling for FiveM.'
-author      'QuantumMalice'
-repository  'https://github.com/QuantumMalice/vehiclehandler'
-version '1.3.4'
+fx_version "cerulean"
+games { "gta5" }
 
-files {
-    'data/progress.lua',
-    'data/vehicle.lua',
-    'modules/handler.lua'
+author "Philipp Decker"
+description "Vehicle deformation getting/setting including synchronisation via entity state bags."
+version "3.0.1"
+
+lua54 "yes"
+use_experimental_fxv2_oal "yes"
+
+dependencies {
+	"/onesync"
 }
 
 shared_script '@ox_lib/init.lua'
-client_script 'client.lua'
-server_script 'server.lua'
+
+client_scripts {
+	"config.lua",
+	"client/deformation.lua",
+	"client/client.lua"
+}
+
+server_scripts {
+	"server/versionChecker.lua",
+	"server/server.lua",
+	'@oxmysql/lib/MySQL.lua'
+}
