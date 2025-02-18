@@ -1,40 +1,72 @@
-﻿
-# VehicleDeformation
+![Main Banner](https://i.imgur.com/hryKQ1w.png)
 
-This is a small resource that allows saving and reapplying of vehicle bodywork deformation. It also 
-features full synchronization of the damage between all players. No more weird situations where 
-other players cannot see the damage on your vehicle!
+## __Features:__
+➢ Tire loss on impact <br>
+➢ Reduces torque based on current health <br>
+➢ Prevents crazy handling from low fuel <br>
+➢ Disables vehicle after heavy collisions <br>
+➢ Disables controls while airborne/flipped <br>
+➢ Repair/Wash item integration (clean, tire, engine) <br>
 
-Fully compatible to my paid script [AdvancedParking](https://forum.cfx.re/t/release-advancedparking-prevents-despawns/2099582) 
-where you can park any vehicle anywhere in the world.
+## __Dependencies:__
+* [ox_lib](https://github.com/overextended/ox_lib)
+* [ox_inventory](https://github.com/overextended/ox_inventory) *(Optional)*
 
-Showcase Video:
+## ***ox_inventory***:
+```lua
+    ["cleaningkit"] = {
+        label = "Cleaning Kit",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "A microfiber cloth with some soap will let your car sparkle again!",
+        client = {
+            image = "cleaningkit.png",
+        },
+        server = {
+            export = 'vehiclehandler.cleaningkit'
+        }
+    },
 
-https://www.youtube.com/watch?v=bxdsG5_DeXo
+    ["tirekit"] = {
+        label = "Tire Kit",
+        weight = 250,
+        stack = true,
+        close = true,
+        description = "A nice toolbox with stuff to repair your tire",
+        client = {
+            image = "tirekit.png",
+        },
+        server = {
+            export = 'vehiclehandler.tirekit'
+        }
+    },
 
+    ["repairkit"] = {
+        label = "Repairkit",
+        weight = 2500,
+        stack = true,
+        close = true,
+        description = "A nice toolbox with stuff to repair your vehicle",
+        client = {
+            image = "repairkit.png",
+        },
+        server = {
+            export = 'vehiclehandler.repairkit',
+        }
+    },
 
-## 📋 Features
-
-- Functions for getting/setting vehicle bodywork deformation.
-- Included exports:
-  - Getting deformation
-  - Setting deformation
-  - Fixing deformation
-  - Checking if two deformations are equal
-  - Checking if one deformation is worse than the other one.
-- Uses entity state bags for full synchronization of bodywork deformation to all players.
-
-
-## 💾 Download
-
-https://github.com/Kiminaze/VehicleDeformation/releases/latest/download/VehicleDeformation.zip
-
-
-## ❓ Support
-
-https://discord.kiminaze.de
-
-
-## 📖 Documentation
-
-https://docs.kiminaze.de/free-scripts/vehicledeformation
+    ["advancedrepairkit"] = {
+        label = "Advanced Repairkit",
+        weight = 5000,
+        stack = true,
+        close = true,
+        description = "A nice toolbox with stuff to repair your vehicle",
+        client = {
+            image = "advancedrepairkit.png",
+        },
+        server = {
+            export = 'vehiclehandler.advancedrepairkit',
+        }
+    },
+```
